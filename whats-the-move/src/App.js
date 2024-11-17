@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import HomePage from './pages/HomePage'; 
 import FriendsPage from './pages/FriendsPage';
 import ProfileScreen from './screens/ProfileScreen';
-import ResultsScreen from './screens/ResultsScreen';
 import Midpoint from './pages/Midpoint';
 import POI from './pages/PlaceOfInterest';
 import BlogPage from './screens/BlogPage';
@@ -51,7 +50,6 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/friends" element={<FriendsPage />} />
-            <Route path="/results" element={<ResultsScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
             <Route path="/midpoint" element={<Midpoint />} />
             <Route path="/poi" element={<POI />} />
