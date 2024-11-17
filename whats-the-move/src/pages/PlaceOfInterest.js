@@ -5,10 +5,10 @@ const POI = () => {
     const navigate = useNavigate();
     const mapRef = useRef(null);
     const sidebarRef = useRef(null);
-    const [map, setMap] = useState(null);
-    const [markers, setMarkers] = useState([]);
+    const [setMap] = useState(null);
+    const [setMarkers] = useState([]);
     const [selectedPlace, setSelectedPlace] = useState(null);
-    const [infoWindow, setInfoWindow] = useState(null);
+    const [setInfoWindow] = useState(null);
     const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 
     useEffect(() => {

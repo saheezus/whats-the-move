@@ -66,6 +66,8 @@ const Midpoint = () => {
         setLoading(false);
       } catch (error) {
         console.error('Error calculating midpoint:', error);
+        console.log(map);
+        console.log(service);
         setLoading(false);
       }
     };
