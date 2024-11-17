@@ -10,35 +10,7 @@ if (!GOOGLE_MAPS_API_KEY) {
 }
 
 const ResultsScreen = () => {
-  const [userPoints, setUserPoints] = useState([
-    { lat: 32.7767, lng: -96.7970 }, // Dallas
-    { lat: 33.1507, lng: -96.8236 }, // Frisco
-    { lat: 33.0198, lng: -96.6989 }, // Plano
-  ]);
-  const [midpoint, setMidpoint] = useState({ lat: 32.98, lng: -96.75 }); // Mock midpoint
-  const [places, setPlaces] = useState([
-    {
-      place_id: "1",
-      name: "Mock Restaurant 1",
-      address: "123 Main St",
-      rating: 4.5,
-      location: { lat: 32.982, lng: -96.751 },
-    },
-    {
-      place_id: "2",
-      name: "Mock Cafe",
-      address: "456 Elm St",
-      rating: 4.2,
-      location: { lat: 32.981, lng: -96.752 },
-    },
-    {
-      place_id: "3",
-      name: "Mock Gym",
-      address: "789 Oak St",
-      rating: 4.8,
-      location: { lat: 32.983, lng: -96.753 },
-    },
-  ]); // Mock POIs
+  
   const [selectedPlace, setSelectedPlace] = useState(null);
 
   return (
