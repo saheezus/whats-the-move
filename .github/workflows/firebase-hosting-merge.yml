@@ -36,3 +36,4 @@ jobs:
           projectId: hackutd24-whatsthemove
         env:
           FIREBASE_TOKEN: '${{ secrets.FIREBASE_TOKEN }}'
+          CI: false
