@@ -11,7 +11,15 @@ export default [
         ...globals.node, // Add Node.js globals
       },
     },
+    rules: {
+      "react-hooks/exhaustive-deps": "off", // Disable the rule here
+      "no-unused-vars": "off",
+    },
   },
-  { languageOptions: { globals: globals.browser } }, // Keep browser globals if needed
+  { 
+    languageOptions: { 
+      globals: globals.browser 
+    } 
+  }, // Keep browser globals if needed
   pluginJs.configs.recommended,
 ];
