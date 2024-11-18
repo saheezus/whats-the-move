@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Users, User, BarChart2, BookOpen } from 'lucide-react';
+import { Users, User, BookOpen } from 'lucide-react';
 
 const HomePage = () => {
   return (
@@ -16,7 +16,7 @@ const HomePage = () => {
       <div className="w-full max-w-lg mx-auto mt-12">
         {/* Logo container - Increased size */}
         <div className="flex justify-center mb-12">
-          <div className="w-48 h-48 bg-blue-50 rounded-full flex items-center justify-center p-8">
+          <div className="w-64 h-64 bg-blue-50 rounded-full flex items-center justify-center p-8">
             <img
               src="../logo192.png"
               alt="Logo"
@@ -28,39 +28,39 @@ const HomePage = () => {
         {/* Navigation Buttons - Modified Grid */}
         <div className="grid grid-cols-2 gap-6 px-4">
           {/* Friends Button - Now spans 2 columns */}
-          <Link 
-            to="/friends" 
+          <Link
+            to="/friends"
             className="col-span-2 group transition-all duration-300"
           >
-            <div className="bg-blue-500 rounded-2xl p-8 shadow-lg shadow-blue-500/20 
-                         hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300
-                         flex items-center justify-center space-x-4">
+            <div className="bg-blue-500 rounded-2xl p-8 shadow-lg shadow-blue-500/20
+                          hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300
+                          flex items-center justify-center space-x-4">
               <Users size={24} className="text-white" />
               <span className="text-white text-lg font-medium">Friends</span>
             </div>
           </Link>
 
           {/* Profile Button */}
-          <Link 
-            to="/profile" 
+          <Link
+            to="/profile"
             className="group transition-all duration-300"
           >
-            <div className="bg-purple-500 rounded-2xl p-8 shadow-lg shadow-purple-500/20 
-                         hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300
-                         flex items-center justify-center space-x-3">
+            <div className="bg-purple-500 rounded-2xl p-8 shadow-lg shadow-purple-500/20
+                          hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300
+                          flex items-center justify-center space-x-3">
               <User size={24} className="text-white" />
               <span className="text-white text-lg font-medium">Profile</span>
             </div>
           </Link>
 
           {/* Explore Button */}
-          <Link 
-            to="/blog" 
+          <Link
+            to="/blog"
             className="group transition-all duration-300"
           >
-            <div className="bg-green-500 rounded-2xl p-8 shadow-lg shadow-green-500/20 
-                         hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300
-                         flex items-center justify-center space-x-3">
+            <div className="bg-green-500 rounded-2xl p-8 shadow-lg shadow-green-500/20
+                          hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300
+                          flex items-center justify-center space-x-3">
               <BookOpen size={24} className="text-white" />
               <span className="text-white text-lg font-medium">Explore</span>
             </div>
