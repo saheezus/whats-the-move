@@ -75,7 +75,7 @@ const Midpoint = () => {
     if (isScriptLoaded) {
       calculateMidpoint();
     }
-  }, [isScriptLoaded]); // Add isScriptLoaded as a dependency
+  }, [isScriptLoaded, map, service]); // Add isScriptLoaded as a dependency
 
   const handleSearch = () => {
     if (!searchQuery || !midpoint || !isScriptLoaded) return;
