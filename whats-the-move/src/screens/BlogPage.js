@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useRef } from 'react';
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
@@ -8,39 +9,39 @@ const BlogPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  const isFetched = useRef(false);
 
-  let isFetched = false;
-
-  useEffect(() => {
-    if (isFetched) return; // Exit early if already fetched
-    isFetched = true;
-
-    const fetchPosts = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          "https://us-central1-hackutd24-whatsthemove.cloudfunctions.net/api/blogs"
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+  useEffect(() => { 
+    if (!isFetched.current) {
+      isFetched.current = true;
+  
+      const fetchPosts = async () => {
+        try {
+          setLoading(true);
+          const response = await fetch(
+            "https://us-central1-hackutd24-whatsthemove.cloudfunctions.net/api/blogs"
+          );
+  
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+  
+          const data = await response.json();
+          console.log("API Response:", data); // Debugging log
+  
+          // Set posts only if data is an array
+          setPosts(Array.isArray(data) ? data : []);
+        } catch (error) {
+          console.error("Error fetching posts:", error);
+          setError("Failed to load blog posts. Please try again later.");
+        } finally {
+          setLoading(false);
         }
-
-        const data = await response.json();
-        console.log("API Response:", data); // Debugging log
-
-        // Set posts only if data is an array
-        setPosts(Array.isArray(data) ? data : []);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-        setError("Failed to load blog posts. Please try again later.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+      };
+  
+      fetchPosts();
+    } 
+  }, []); // No dependency array issues here
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);

@@ -5,9 +5,12 @@ const POI = () => {
     const navigate = useNavigate();
     const mapRef = useRef(null);
     const sidebarRef = useRef(null);
+    // eslint-disable-next-line no-unused-vars
     const [map, setMap] = useState(null);
+    // eslint-disable-next-line no-unused-vars
     const [markers, setMarkers] = useState([]);
     const [selectedPlace, setSelectedPlace] = useState(null);
+    // eslint-disable-next-line no-unused-vars
     const [infoWindow, setInfoWindow] = useState(null);
     const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 

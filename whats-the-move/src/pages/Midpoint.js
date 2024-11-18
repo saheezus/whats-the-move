@@ -40,6 +40,7 @@ const Midpoint = () => {
     };
   }, []);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const calculateMidpoint = async () => {
       try {
@@ -75,6 +76,7 @@ const Midpoint = () => {
     if (isScriptLoaded) {
       calculateMidpoint();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isScriptLoaded, map, service]); // Add isScriptLoaded as a dependency
 
   const handleSearch = () => {
