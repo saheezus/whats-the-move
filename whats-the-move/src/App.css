@@ -3,7 +3,7 @@ body, html {
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: #d5d5d5; /* Page background */
+  background-color: #ffffff; /* Page background */
 }
 
 .app {
@@ -19,7 +19,7 @@ body, html {
   left: 0;
   width: 100%;
   height: 60px; /* Match this with the padding-top in .content */
-  background-color: #00509e; /* Navbar background */
+  background-color: #000000; /* Navbar background */
   display: flex; /* Enable Flexbox */
   justify-content: center; /* Center items horizontally */
   align-items: center; /* Center items vertically */
@@ -54,6 +54,10 @@ body, html {
   font-size: 16px;
   font-weight: bold;
   transition: color 0.3s;
+}
+
+.nav-link-home {
+  color: #f8f9fa; /* Light gray/white text */
 }
 
 .nav-link:hover {

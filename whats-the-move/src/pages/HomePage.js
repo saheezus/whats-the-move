@@ -4,7 +4,7 @@ import { Users, User, BookOpen } from 'lucide-react';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col p-6">
+    <div className="min-h-screen bg-white flex flex-col p-6">
       {/* Application Title */}
       <header className="text-center mt-8">
         <h1 className="text-4xl font-light tracking-wide text-blue-600">

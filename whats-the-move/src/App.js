@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import HomePage from './pages/HomePage'; 
+// import HomePage from './pages/HomePage'; 
+import Home from './pages/Home';
 import FriendsPage from './pages/FriendsPage';
 import ProfileScreen from './screens/ProfileScreen';
 import Midpoint from './pages/Midpoint';
@@ -11,33 +12,18 @@ import { IoHomeOutline, IoPeopleOutline, IoPersonOutline, IoMapOutline } from 'r
 import './App.css';
 
 const TabNavigator = () => (
-  <nav className="navbar">
-    <ul className="nav-list">
-      <li>
-        <Link to="/" className="nav-link">
-          <IoHomeOutline size={24} />
-          <span>Home</span>
-        </Link>
-      </li>
-      <li>
-        <Link to="/friends" className="nav-link">
-          <IoPeopleOutline size={24} />
-          <span>Friends</span>
-        </Link>
-      </li>
-      <li>
-        <Link to="/blog" className="nav-link">
-          <IoMapOutline size={24} />
-          <span>Explore</span>
-        </Link>
-      </li>
-      <li>
-        <Link to="/profile" className="nav-link">
-          <IoPersonOutline size={24} />
-          <span>Profile</span>
-        </Link>
-      </li>
-    </ul>
+  <nav className="flex justify-between items-center p-5 bg-black text-white">
+    <Link to="/" className="text-l font-bold hover:text-gray-400 transition-colors duration-300">
+      <span>What's The Move</span>
+    </Link>
+    <div className="flex gap-3 sm:gap-10">
+      <Link to="/" className="text-l hover:text-gray-400 transition-colors duration-300">
+        <span>Blog</span>
+      </Link>
+      <Link to="/profile" className="text-l hover:text-gray-400 transition-colors duration-300">
+        <span>Account</span>
+      </Link>
+    </div>
   </nav>
 );
 
@@ -46,9 +32,9 @@ const App = () => {
     <Router>
       <div>
         <TabNavigator />
-        <div className="content">
+        <div className="">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<Home />} />
             <Route path="/friends" element={<FriendsPage />} />
             <Route path="/profile" element={<ProfileScreen />} />
             <Route path="/midpoint" element={<Midpoint />} />
