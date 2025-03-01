@@ -13,7 +13,7 @@ import './App.css';
 
 const TabNavigator = () => (
   <nav className="flex justify-between items-center p-5 bg-black text-white">
-    <Link to="/" className="text-l font-bold hover:text-gray-400 transition-colors duration-300">
+    <Link to="/" className="text-xl font-bold hover:text-gray-400 transition-colors duration-300">
       <span>What's The Move</span>
     </Link>
     <div className="flex gap-3 sm:gap-10">
