@@ -1,66 +1,64 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Users, User, BookOpen } from 'lucide-react';
-import { APIProvider, Map, useMapsLibrary } from "@vis.gl/react-google-maps";
-import { useEffect } from 'react';
-import { usePlacesWidget } from 'react-google-autocomplete';
-import Autocomplete from 'react-google-autocomplete';
-
-const PlacesInput = () => {
-    const { ref } = usePlacesWidget({
-        apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-        onPlaceSelected: (place) => {
-            console.log(place);
-        },
-    });
-
-    return <input 
-            className="bg-gray-100 rounded w-full py-2 px-3 text-gray-700  focus:outline-none" 
-            id="username" 
-            type="text" 
-            placeholder="Location"
-            ref={ref}
-    />;
-}
+import { useEffect, useState, useRef } from 'react';
+import MapComponent from './MapComponent';
+import PlacesInput from './PlacesInput';
 
 const Home = () => {
 
+    const [locations, setLocations] = useState([""]);
+    const [locIdx, setLocIdx] = useState(null);
+
+    const addLocation = () => {
+        setLocations([...locations, ""]);
+    }
+
+    const removeLocation = (index) => {
+        setLocations(locations.filter((location, i) => i !== index));
+    }
+
+    const updateLocation = (index, value) => {
+        const newLocations = [...locations];
+        newLocations[index] = value;
+        setLocations(newLocations);
+    };
+
     return (
         <div className="bg-white flex flex-col p-6">
-            <div className="bg-gray-100 grid grid-cols-3 shadow-sm flex p-6">
-                <div className="col-span-2 flex flex-col">
+            <div className="bg-gray-100 grid grid-cols-3 shadow-sm flex p-6 rounded-lg">
+                <div className="col-span-2 flex flex-col rounded-lg">
                     <div className="flex flex-col">
-                        <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} className="rounded-xl inline-block">
-                            <Map
-                                style={{width: '60vw', height: '80vh', borderRadius: '10rem'}}
-                                defaultCenter={{lat: 47.6, lng: -122}}
-                                defaultZoom={7}
-                                gestureHandling={'greedy'}
-                                disableDefaultUI={true}
-                            />
-                        </APIProvider>
+                        <MapComponent />
                     </div>
                 </div>
-                <div className="bg-white flex-col flex justify-center items-center"> 
-                    <div className="">
-                        <span className="text-2xl text-bold">What's the move?</span>
+                <div className="bg-white flex-col flex rounded-lg shadow-md"> 
+                    <div className="p-5 pb-2">
+                        <span className="text-xl font-bold">Let's get started</span>
                     </div>
-                    <div className="p-2">
+                    <div className="px-4 py-2 w-full">
                         <input 
-                            className="bg-gray-100 rounded w-full py-2 px-3 text-gray-700  focus:outline-none" 
-                            id="username" 
+                            className="bg-gray-100 rounded w-full py-2 px-3 text-gray-700 focus:outline-none"  
                             type="text" 
                             placeholder="Place Category"
                         />
                     </div>
-                    <div className="p-2">
-                        <APIProvider
-                            apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-                            libraries={["places"]}
-                        >
-                            <PlacesInput />
-                        </APIProvider>
+                    <div className="px-4 py-2 w-full">
+                        {locations.map((location, index) => (
+                            <PlacesInput 
+                                key={index}
+                                index={index}
+                                value={location}
+                                onChange={(value) => updateLocation(index, value)}
+                                onRemove={() => removeLocation(index)}
+                                isSelected={locIdx === index}
+                                onSelect={setLocIdx}
+                            />
+                        ))}
                     </div>
+
+                    <button>
+                        <img src={require("../icons/plus.png")} className='w-8 h-8 hover:opacity-50 transition-opacity duration-300' onClick={addLocation}></img>
+                    </button>
                 </div>
             </div>
         </div>

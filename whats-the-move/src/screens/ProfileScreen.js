@@ -18,11 +18,11 @@ export default function ProfileScreen() {
     <div style={styles.container}>
       <div style={styles.profileCard}>
         <div style={styles.profilePictureContainer}>
-          <img
+          {/* <img
             src={require('../khabib.jpeg')}
             alt="Profile"
             style={styles.profilePicture}
-          />
+          /> */}
         </div>
         <h1 style={styles.name}>{userData.name}</h1>
         <p style={styles.email}>{userData.email}</p>

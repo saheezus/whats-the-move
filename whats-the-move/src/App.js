@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import HomePage from './pages/HomePage'; 
 import Home from './pages/Home';
@@ -8,13 +8,12 @@ import Midpoint from './pages/Midpoint';
 import POI from './pages/PlaceOfInterest';
 import BlogPage from './screens/BlogPage';
 import DirectionsPage from './pages/DirectionsPage';
-import { IoHomeOutline, IoPeopleOutline, IoPersonOutline, IoMapOutline } from 'react-icons/io5';
 import './App.css';
 
 const TabNavigator = () => (
-  <nav className="flex justify-between items-center p-5 bg-black text-white">
+  <nav className="flex justify-between items-center p-4 bg-black text-white">
     <Link to="/" className="text-xl font-bold hover:text-gray-400 transition-colors duration-300">
-      <span>What's The Move</span>
+      <span>What's The Move?</span>
     </Link>
     <div className="flex gap-3 sm:gap-10">
       <Link to="/" className="text-l hover:text-gray-400 transition-colors duration-300">
@@ -28,11 +27,35 @@ const TabNavigator = () => (
 );
 
 const App = () => {
+
+  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+
+  useEffect(() => {
+      const loadGoogleMapsScript = () => {
+          const script = document.createElement('script');
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`;
+          script.async = true;
+          script.defer = true;
+          script.addEventListener('load', () => setIsScriptLoaded(true));
+          document.head.appendChild(script);
+      };
+
+      loadGoogleMapsScript();
+
+      return () => {
+          const script = document.querySelector(`script[src*="maps.googleapis.com/maps/api/js"]`);
+          if (script) {
+              document.head.removeChild(script);
+          }
+      };
+
+  }, []);
+
   return (
     <Router>
       <div>
         <TabNavigator />
-        <div className="">
+        {isScriptLoaded ? (<div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/friends" element={<FriendsPage />} />
@@ -42,7 +65,7 @@ const App = () => {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/directions" element={<DirectionsPage />} />
           </Routes>
-        </div>
+        </div>) : null}
       </div>
     </Router>
   );
