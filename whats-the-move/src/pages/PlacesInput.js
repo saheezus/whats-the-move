@@ -28,27 +28,26 @@ const PlacesInput = ({ index, value, onChange, onRemove, isSelected, onSelect })
 
     return (
         <div className="relative w-full">
-            <div className="">
-                <input 
-                    type="text" 
-                    value={input} 
+            <div className="relative w-full py-2">
+                <input
+                    type="text"
+                    value={input}
                     onChange={handleInput}
-                    className="bg-gray-100 rounded w-full py-2 px-3 text-gray-700 focus:outline-none" 
+                    className="bg-gray-100 rounded w-full py-2 px-3 pr-10 text-gray-700 focus:outline-none"
                     placeholder="Location"
                     onClick={() => onSelect(index)}
                 />
-                <button 
-                    onClick={() => onRemove(index)} 
-                    className={`ml-2 px-3 py-2 rounded transition ${
-                        index === 0 ? "bg-gray-300 cursor-not-allowed" : "bg-red-500 hover:bg-red-600 text-white"
-                    }`}
-                    disabled={index === 0} // Prevent removing last input
-                >
+                {index !== 0 && (
+                    <button
+                        onClick={() => onRemove(index)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-red-600"
+                    >
                     ❌
-                </button>
+                    </button>
+                )}
             </div>
             {isSelected && predictions.length > 0 && (
-                <div className="bg-white shadow-md rounded-md absolute w-full">
+                <div className="bg-white shadow-md rounded-md absolute w-full z-10">
                     <ul>
                         {predictions.map((prediction) => (
                             <li key={prediction.id} className="p-2 hover:bg-gray-100 text-sm w-full">

@@ -15,26 +15,6 @@ const POI = () => {
     const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 
     useEffect(() => {
-        const loadGoogleMapsScript = () => {
-            const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`;
-            script.async = true;
-            script.defer = true;
-            script.addEventListener('load', () => setIsScriptLoaded(true));
-            document.head.appendChild(script);
-        };
-
-        loadGoogleMapsScript();
-
-        return () => {
-            const script = document.querySelector(`script[src*="maps.googleapis.com/maps/api/js"]`);
-            if (script) {
-                document.head.removeChild(script);
-            }
-        };
-    }, []);
-
-    useEffect(() => {
         if (!isScriptLoaded) return;
 
         const initMap = () => {

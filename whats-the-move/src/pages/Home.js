@@ -42,7 +42,7 @@ const Home = () => {
                             placeholder="Place Category"
                         />
                     </div>
-                    <div className="px-4 py-2 w-full">
+                    <div className="px-4 w-full">
                         {locations.map((location, index) => (
                             <PlacesInput 
                                 key={index}
@@ -55,10 +55,11 @@ const Home = () => {
                             />
                         ))}
                     </div>
-
-                    <button>
-                        <img src={require("../icons/plus.png")} className='w-8 h-8 hover:opacity-50 transition-opacity duration-300' onClick={addLocation}></img>
-                    </button>
+                    <div className="py-2 items-center flex justify-center">
+                        <button onClick={addLocation} className="bg-black w-1/4 py-2 mx-auto rounded-md">
+                            <span className="text-white">Add Location</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
